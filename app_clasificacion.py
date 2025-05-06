@@ -11,7 +11,7 @@ from gensim.models import Word2Vec
 import os
 
 # Inicializar Flask
-app_clasificacion = Flask(__name__)
+app = Flask(__name__)
 import zipfile
 
 # Descomprimir si no está ya
@@ -60,7 +60,7 @@ def encontrar_fila_encabezado(archivo, columnas, max_rows=20):
             return i
     return None
 
-@app_clasificacion.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         archivo = request.files["archivo"]
