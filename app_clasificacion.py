@@ -21,6 +21,8 @@ if not os.path.exists("modelo_rf.pkl"):
         zip_ref.extractall(".")
 
 rf_model = joblib.load("modelo_rf.pkl")
+rf_model.n_jobs = 1
+
 scaler = joblib.load("scaler.pkl")
 word2vec_model = KeyedVectors.load_word2vec_format("word2vec.txt", binary=False)
 
