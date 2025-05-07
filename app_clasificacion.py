@@ -41,16 +41,16 @@ def limpiar_texto(texto):
     palabras = [lemmatizer.lemmatize(word) for word in palabras]
     return " ".join(palabras)
 
-# Función para obtener embedding
 def get_embedding(texto):
     palabras = texto.split()
     vector = np.zeros(200)
     count = 0
     for palabra in palabras:
-        if palabra in word2vec_model.wv:
-            vector += word2vec_model.wv[palabra]
+        if palabra in word2vec_model:
+            vector += word2vec_model[palabra]
             count += 1
     return vector / count if count > 0 else vector
+
 
 # Función para detectar la fila con encabezados
 def encontrar_fila_encabezado(archivo, columnas, max_rows=20):
