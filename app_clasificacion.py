@@ -9,6 +9,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from gensim.models import Word2Vec
 import os
+from gensim.models import KeyedVectors 
 
 # Inicializar Flask
 app = Flask(__name__)
@@ -21,7 +22,7 @@ if not os.path.exists("modelo_rf.pkl"):
 
 rf_model = joblib.load("modelo_rf.pkl")
 scaler = joblib.load("scaler.pkl")
-word2vec_model = Word2Vec.load("word2vec.model")
+word2vec_model = KeyedVectors.load_word2vec_format("word2vec.txt", binary=False)
 
 # Descargar recursos de NLTK
 nltk.download('stopwords')
